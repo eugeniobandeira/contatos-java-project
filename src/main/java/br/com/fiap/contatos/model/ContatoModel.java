@@ -29,4 +29,7 @@ public class ContatoModel {
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
+    public Long getId() {
+        return id;
+    }
 }
