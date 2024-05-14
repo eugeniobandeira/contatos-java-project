@@ -48,8 +48,19 @@ public class ContatoService {
 
     public ContatoModel atualizar(ContatoModel contatoModel) {
         Optional<ContatoModel> contatoOptional = _contatoRepository.findById(contatoModel.getId());
+
         if (contatoOptional.isPresent()) {
             return _contatoRepository.save(contatoModel);
+        } else {
+            throw new RuntimeException("Contato não encontrado!");
+        }
+    }
+
+    public ContatoModel buscarContatoPorNome(String nome) {
+        Optional<ContatoModel> contatoOptional = _contatoRepository.findByNome(nome);
+
+        if (contatoOptional.isPresent()) {
+            return contatoOptional.get();
         } else {
             throw new RuntimeException("Contato não encontrado!");
         }
