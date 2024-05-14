@@ -43,7 +43,7 @@ public class ContatoService {
     }
 
     public List<ContatoModel> listarAniversariantes(LocalDate dataInicial, LocalDate dataFinal) {
-        return _contatoRepository.findByDataNscimentoBetween(dataInicial, dataFinal);
+        return _contatoRepository.findByDataNascimentoBetween(dataInicial, dataFinal);
     }
 
     public ContatoModel atualizar(ContatoModel contatoModel) {

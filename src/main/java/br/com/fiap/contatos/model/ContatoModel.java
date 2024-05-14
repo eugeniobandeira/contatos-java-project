@@ -21,7 +21,7 @@ public class ContatoModel {
     @SequenceGenerator(
         name = "TTBL_CONTATOS_PROJECT_SEQ",
         sequenceName = "TBL_CONTATOS_PROJECT_SEQ",
-            allocationSize = 50
+            allocationSize = 1
     )
     private Long id;
     private String nome;
