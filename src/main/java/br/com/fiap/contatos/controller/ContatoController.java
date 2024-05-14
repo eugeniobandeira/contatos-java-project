@@ -28,7 +28,7 @@ public class ContatoController {
         return _service.listarTodosOsContatos();
     }
 
-    @GetMapping("/contatdos/{id}")
+    @GetMapping("/contatos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ContatoModel listarContatoPorId(@PathVariable Long id) {
         return _service.buscarPorId(id);

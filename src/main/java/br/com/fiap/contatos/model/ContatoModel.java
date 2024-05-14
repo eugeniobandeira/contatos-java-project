@@ -16,11 +16,11 @@ public class ContatoModel {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "TBL_CONTATOS_PROJECT_SEQ"
+            generator = "CONTATO_SEQ"
     )
     @SequenceGenerator(
-        name = "TTBL_CONTATOS_PROJECT_SEQ",
-        sequenceName = "TBL_CONTATOS_PROJECT_SEQ",
+        name = "CONTATO_SEQ",
+        sequenceName = "CONTATO_SEQ",
             allocationSize = 1
     )
     private Long id;
