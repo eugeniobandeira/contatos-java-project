@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "tab_contatos")
+@Table(name = "TBL_CONTATOS_PROJECT")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -16,11 +16,11 @@ public class ContatoModel {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "TAB_CONTATOS_SEQ"
+            generator = "TBL_CONTATOS_PROJECT_SEQ"
     )
     @SequenceGenerator(
-        name = "TAB_CONTATOS_SEQ",
-        sequenceName = "TAB_CONTATOS_SEQ",
+        name = "TTBL_CONTATOS_PROJECT_SEQ",
+        sequenceName = "TBL_CONTATOS_PROJECT_SEQ",
             allocationSize = 50
     )
     private Long id;
