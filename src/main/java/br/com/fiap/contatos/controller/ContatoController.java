@@ -1,9 +1,11 @@
 package br.com.fiap.contatos.controller;
 
+import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -18,20 +20,25 @@ public class ContatoController {
 
     @PostMapping("/contatos")
     @ResponseStatus(HttpStatus.CREATED)
-    public ContatoModel gravar(@RequestBody ContatoModel contatoModel) {
+    public ReadContatoDto gravar(@RequestBody ContatoModel contatoModel) {
         return _service.cadastrar(contatoModel);
     }
 
     @GetMapping("/contatos")
     @ResponseStatus(HttpStatus.OK)
-    public List<ContatoModel> listarContatos() {
+    public List<ReadContatoDto> listarContatos() {
         return _service.listarTodosOsContatos();
     }
 
     @GetMapping("/contatos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ContatoModel listarContatoPorId(@PathVariable Long id) {
-        return _service.buscarPorId(id);
+    public ResponseEntity<ReadContatoDto> listarContatoPorId(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(_service.buscarPorId(id));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @GetMapping("/contatos/{nome}")

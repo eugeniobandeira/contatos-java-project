@@ -26,6 +26,7 @@ public class ContatoModel {
     private Long id;
     private String nome;
     private String email;
+    private String senha;
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 

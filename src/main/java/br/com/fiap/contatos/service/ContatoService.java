@@ -1,5 +1,6 @@
 package br.com.fiap.contatos.service;
 
+import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.repository.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +13,28 @@ import java.util.Optional;
 @Service
 public class ContatoService {
 
-    //Indica que este atributo é injetado de forma automática, sem a necessidade de instanciar
     @Autowired
     private ContatoRepository _contatoRepository;
 
-    public ContatoModel cadastrar(ContatoModel contatoModel) {
-        return _contatoRepository.save(contatoModel);
+    public ReadContatoDto cadastrar(ContatoModel contatoModel) {
+        return new ReadContatoDto(_contatoRepository.save(contatoModel));
     }
 
-    public ContatoModel buscarPorId(Long id) {
+    public ReadContatoDto buscarPorId(Long id) {
         Optional<ContatoModel> contatoOptional = _contatoRepository.findById(id);
         if (contatoOptional.isPresent()) {
-            return contatoOptional.get();
+            return new ReadContatoDto(contatoOptional.get());
         } else {
            throw new RuntimeException("Contato não encontrado!");
         }
     }
 
-    public List<ContatoModel> listarTodosOsContatos() {
-        return _contatoRepository.findAll();
+    public List<ReadContatoDto> listarTodosOsContatos() {
+        return _contatoRepository
+                .findAll()
+                .stream()
+                .map(ReadContatoDto::new)
+                .toList();
     }
 
     public void excluir(Long id) {
