@@ -1,8 +1,10 @@
 package br.com.fiap.contatos.service;
 
+import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.repository.ContatoRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,10 @@ public class ContatoService {
     @Autowired
     private ContatoRepository _contatoRepository;
 
-    public ReadContatoDto cadastrar(ContatoModel contatoModel) {
-        return new ReadContatoDto(_contatoRepository.save(contatoModel));
+    public ReadContatoDto cadastrar(CreateContatoDto createContatoDto) {
+        ContatoModel contato = new ContatoModel();
+        BeanUtils.copyProperties(createContatoDto, contato);
+        return new ReadContatoDto(_contatoRepository.save(contato));
     }
 
     public ReadContatoDto buscarPorId(Long id) {

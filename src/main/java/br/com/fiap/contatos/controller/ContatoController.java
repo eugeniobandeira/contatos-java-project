@@ -1,5 +1,6 @@
 package br.com.fiap.contatos.controller;
 
+import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;
@@ -20,8 +21,8 @@ public class ContatoController {
 
     @PostMapping("/contatos")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReadContatoDto gravar(@RequestBody ContatoModel contatoModel) {
-        return _service.cadastrar(contatoModel);
+    public ReadContatoDto gravar(@RequestBody CreateContatoDto createContatoDto) {
+        return _service.cadastrar(createContatoDto);
     }
 
     @GetMapping("/contatos")
