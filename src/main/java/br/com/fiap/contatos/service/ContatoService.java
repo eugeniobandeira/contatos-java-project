@@ -2,6 +2,7 @@ package br.com.fiap.contatos.service;
 
 import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
+import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.repository.ContatoRepository;
 import org.springframework.beans.BeanUtils;
@@ -29,7 +30,7 @@ public class ContatoService {
         if (contatoOptional.isPresent()) {
             return new ReadContatoDto(contatoOptional.get());
         } else {
-           throw new RuntimeException("Contato não encontrado!");
+           throw new UserNotFoundException("Contato não encontrado!");
         }
     }
 

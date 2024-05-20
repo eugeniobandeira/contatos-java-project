@@ -2,6 +2,7 @@ package br.com.fiap.contatos.controller;
 
 import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
+import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;
 import jakarta.validation.Valid;
@@ -37,7 +38,7 @@ public class ContatoController {
     public ResponseEntity<ReadContatoDto> listarContatoPorId(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(_service.buscarPorId(id));
-        } catch (Exception e) {
+        } catch (UserNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
 
