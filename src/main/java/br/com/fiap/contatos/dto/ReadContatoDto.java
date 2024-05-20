@@ -1,4 +1,4 @@
-package br.com.fiap.contatos.dto.contato;
+package br.com.fiap.contatos.dto;
 
 import br.com.fiap.contatos.model.ContatoModel;
 import jakarta.persistence.Column;

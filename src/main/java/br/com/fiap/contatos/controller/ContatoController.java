@@ -1,12 +1,14 @@
 package br.com.fiap.contatos.controller;
 
-import br.com.fiap.contatos.dto.contato.CreateContatoDto;
-import br.com.fiap.contatos.dto.contato.ReadContatoDto;
+import br.com.fiap.contatos.dto.CreateContatoDto;
+import br.com.fiap.contatos.dto.ReadContatoDto;
 import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +31,8 @@ public class ContatoController {
 
     @GetMapping("/contatos")
     @ResponseStatus(HttpStatus.OK)
-    public List<ReadContatoDto> listarContatos() {
-        return _service.listarTodosOsContatos();
+    public Page<ReadContatoDto> listarContatos(Pageable paginacao) {
+        return _service.listarTodosOsContatos(paginacao);
     }
 
     @GetMapping("/contatos/{id}")

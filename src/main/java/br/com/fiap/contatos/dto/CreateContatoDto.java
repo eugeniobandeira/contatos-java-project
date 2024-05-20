@@ -1,4 +1,4 @@
-package br.com.fiap.contatos.dto.contato;
+package br.com.fiap.contatos.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

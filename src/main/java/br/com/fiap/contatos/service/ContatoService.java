@@ -1,12 +1,15 @@
 package br.com.fiap.contatos.service;
 
-import br.com.fiap.contatos.dto.contato.CreateContatoDto;
-import br.com.fiap.contatos.dto.contato.ReadContatoDto;
+import br.com.fiap.contatos.dto.CreateContatoDto;
+import br.com.fiap.contatos.dto.ReadContatoDto;
 import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.repository.ContatoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -34,12 +37,10 @@ public class ContatoService {
         }
     }
 
-    public List<ReadContatoDto> listarTodosOsContatos() {
+    public Page<ReadContatoDto> listarTodosOsContatos(Pageable paginacao) {
         return _contatoRepository
-                .findAll()
-                .stream()
-                .map(ReadContatoDto::new)
-                .toList();
+                .findAll(paginacao)
+                .map(ReadContatoDto::new);
     }
 
     public void excluir(Long id) {
