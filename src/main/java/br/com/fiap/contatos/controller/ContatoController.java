@@ -4,6 +4,7 @@ import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ContatoController {
 
     @PostMapping("/contatos")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReadContatoDto gravar(@RequestBody CreateContatoDto createContatoDto) {
+    public ReadContatoDto gravar(@RequestBody @Valid CreateContatoDto createContatoDto) {
         return _service.cadastrar(createContatoDto);
     }
 
@@ -42,11 +43,11 @@ public class ContatoController {
 
     }
 
-    @GetMapping("/contatos/{nome}")
-    @ResponseStatus(HttpStatus.OK)
-    public ContatoModel listarContatoPorNome(@PathVariable String nome) {
-        return _service.buscarContatoPorNome(nome);
-    }
+//    @GetMapping("/contatos/{nome}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ContatoModel listarContatoPorNome(@PathVariable String nome) {
+//        return _service.buscarContatoPorNome(nome);
+//    }
 
     @GetMapping("/contatos/{dataInicial}/{dataFinal}")
     @ResponseStatus(HttpStatus.OK)
