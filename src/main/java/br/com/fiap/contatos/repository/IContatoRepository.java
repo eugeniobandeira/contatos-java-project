@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface ContatoRepository extends JpaRepository<ContatoModel, Long> {
+public interface IContatoRepository extends JpaRepository<ContatoModel, Long> {
     public Optional<ContatoModel> findByNome(String nome);
 
     public List<ContatoModel> findByDataNascimentoBetween(LocalDate dataInicial, LocalDate dataFinal);

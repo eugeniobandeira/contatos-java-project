@@ -4,7 +4,7 @@ import br.com.fiap.contatos.dto.contato.CreateContatoDto;
 import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
-import br.com.fiap.contatos.repository.ContatoRepository;
+import br.com.fiap.contatos.repository.IContatoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class ContatoService {
 
     @Autowired
-    private ContatoRepository _contatoRepository;
+    private IContatoRepository _contatoRepository;
 
     public ReadContatoDto cadastrar(CreateContatoDto createContatoDto) {
         ContatoModel contato = new ContatoModel();
