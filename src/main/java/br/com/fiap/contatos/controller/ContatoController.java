@@ -1,7 +1,7 @@
 package br.com.fiap.contatos.controller;
 
-import br.com.fiap.contatos.dto.CreateContatoDto;
-import br.com.fiap.contatos.dto.ReadContatoDto;
+import br.com.fiap.contatos.dto.contato.CreateContatoDto;
+import br.com.fiap.contatos.dto.contato.ReadContatoDto;
 import br.com.fiap.contatos.exception.UserNotFoundException;
 import br.com.fiap.contatos.model.ContatoModel;
 import br.com.fiap.contatos.service.ContatoService;

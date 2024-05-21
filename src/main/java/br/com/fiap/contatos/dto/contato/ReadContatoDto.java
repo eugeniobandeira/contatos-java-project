@@ -1,7 +1,6 @@
-package br.com.fiap.contatos.dto;
+package br.com.fiap.contatos.dto.contato;
 
 import br.com.fiap.contatos.model.ContatoModel;
-import jakarta.persistence.Column;
 
 import java.time.LocalDate;
 
