@@ -10,8 +10,9 @@ public record ReadUsuarioDto(
     public ReadUsuarioDto(UsuarioModel usuarioModel) {
         this(
                 usuarioModel.getId(),
-                usuarioModel.getEmail(),
-                usuarioModel.getSenha()
+                usuarioModel.getNome(),
+                usuarioModel.getEmail()
+
         );
     }
 }
