@@ -1,5 +1,6 @@
 package br.com.fiap.contatos.controller;
 
+import br.com.fiap.contatos.dto.login.CreateLoginDto;
 import br.com.fiap.contatos.dto.usuario.CreateUsuarioDto;
 import br.com.fiap.contatos.dto.usuario.ReadUsuarioDto;
 import br.com.fiap.contatos.service.UsuarioService;
@@ -26,12 +27,12 @@ public class AuthController {
     public ResponseEntity login(
             @RequestBody
             @Valid
-            CreateUsuarioDto userDto
+            CreateLoginDto loginDto
     ) {
         UsernamePasswordAuthenticationToken usernamePassword =
                 new UsernamePasswordAuthenticationToken(
-                        userDto.email(),
-                        userDto.senha()
+                        loginDto.email(),
+                        loginDto.senha()
                 );
         Authentication auth = _authManager.authenticate(usernamePassword);
 
