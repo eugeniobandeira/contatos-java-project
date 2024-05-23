@@ -1,5 +1,8 @@
 package br.com.fiap.contatos.dto.usuario;
 
+import br.com.fiap.contatos.enums.UsuarioRoleEnum;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +21,9 @@ public record CreateUsuarioDto(
 
         @NotBlank(message = "A senha éobrigatória!")
         @Size(min = 6, max = 80, message = "A senha deve ter entre 6 e 80 caracteres!")
-        String senha
+        String senha,
+
+        UsuarioRoleEnum role
 ) {
 
 }
