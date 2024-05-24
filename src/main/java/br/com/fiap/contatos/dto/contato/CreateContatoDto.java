@@ -17,10 +17,6 @@ public record CreateContatoDto(
         @Email(message = "O email está com o formato inválido!")
         String email,
 
-        @NotBlank(message = "A senha é obrigatória!")
-        @Size(min = 6, max = 10, message = "A senha deve ter entre 6 e 10 caracteres.")
-        String senha,
-
         @NotNull(message = "A data de nascimento é obrigatória.")
         LocalDate dataNascimento
 ) {
