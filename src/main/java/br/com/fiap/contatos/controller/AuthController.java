@@ -2,6 +2,7 @@ package br.com.fiap.contatos.controller;
 
 import br.com.fiap.contatos.config.security.TokenService;
 import br.com.fiap.contatos.dto.login.CreateLoginDto;
+import br.com.fiap.contatos.dto.token.ReadTokenDto;
 import br.com.fiap.contatos.dto.usuario.CreateUsuarioDto;
 import br.com.fiap.contatos.dto.usuario.ReadUsuarioDto;
 import br.com.fiap.contatos.model.UsuarioModel;
@@ -43,7 +44,7 @@ public class AuthController {
 
         String token = _tokenService.gerarToken((UsuarioModel) auth.getPrincipal());
 
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(new ReadTokenDto(token));
     }
 
     @PostMapping("/register")
